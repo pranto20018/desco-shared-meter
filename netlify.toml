@@ -1,0 +1,27 @@
+[build]
+  command = "npm run build"
+  # Points at the Next build output, which is what @netlify/plugin-nextjs reads.
+  # The plugin swaps in its own static directory during the build and restores
+  # this afterwards, so leave it as-is.
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Official Next.js runtime — routes App Router server code & route handlers
+# through Netlify Functions automatically. No manual redirects needed.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 3000
+  port = 8888

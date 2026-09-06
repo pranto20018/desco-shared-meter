@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+local.db
+local.db-*
+.netlify
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Cygwin/MSYS crash dumps
+*.stackdump
